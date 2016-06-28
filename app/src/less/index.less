@@ -1,0 +1,25 @@
+.wrap {
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    p {
+        color:#fff;
+        font: bold 200% Consolas, Monaco, monospace;
+        width: 18ch;
+        margin-top: 13%;
+        white-space: nowrap;
+        overflow: hidden;
+        border-right: .05em solid;
+        animation: typing 6s steps(18),
+                   caret 1s steps(1) infinite;
+    }
+}
+
+@keyframes typing {
+    from { width: 0 }
+}
+
+@keyframes caret {
+    50% { border-right-color: transparent; }
+}

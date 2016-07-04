@@ -1,23 +1,15 @@
 var webpack = require('webpack');
 var path = require('path');
-var CommonsChunkPlugin = require("webpack/lib/optimize/CommonsChunkPlugin");
-var ExtractTextPlugin = require("extract-text-webpack-plugin");
-var OpenBrowserPlugin = require('open-browser-webpack-plugin');
+var ExtractTextPlugin = require('extract-text-webpack-plugin'); //抽取CSS文件插件
+var uglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
 
 module.exports = {
-    devServer: {       
-        historyApiFallback: true,
-        hot: true,
-        inline: true,
-        progress: true,
-        contentBase:'./app'
-    },
     entry: {
         index: path.resolve(__dirname, 'app/src/js/index.js'),
         part: path.resolve(__dirname, 'app/src/js/part.js')        
     },
     output: {
-        publicPath: 'dist',
+        path: './app/dist',
         filename: 'js/[name].min.js'
     },
     module: {
@@ -33,13 +25,17 @@ module.exports = {
         extensions: ['', '.js', '.jsx'],
     },
     plugins: [
-        new CommonsChunkPlugin('js/common.min.js'),
+        new webpack.optimize.CommonsChunkPlugin('js/common.min.js'),
         new ExtractTextPlugin("css/[name].min.css"),
         new webpack.ProvidePlugin({
             $: "jquery",
             jQuery: "jquery",
             "window.jQuery": "jquery"
         }),
-        new OpenBrowserPlugin({ url: 'http://localhost:8080' })
+        new uglifyJsPlugin({
+            compress: {
+                warnings: false
+            }
+        })
     ]
 };

@@ -10,23 +10,24 @@ module.exports = {
         hot: true,
         inline: true,
         progress: true,
-        contentBase:'./app'
+        contentBase: './app'
     },
     entry: {
         index: path.resolve(__dirname, 'app/src/js/index.js'),
         part: path.resolve(__dirname, 'app/src/js/part.js')        
     },
     output: {
-        publicPath: 'dist',
+        path: 'dist',  //在内存中生成文件的路径
+        publicPath: 'http://localhost:8080/dist',  //内部图片路径
         filename: 'js/[name].min.js'
     },
     module: {
         loaders: [
-            { test: /\.css$/, loader: ExtractTextPlugin.extract('style-loader', 'css-loader') },
-            { test: /\.less$/, loader: ExtractTextPlugin.extract("style-loader", "css-loader!less-loader") },
+            { test: /\.css$/, loader: ExtractTextPlugin.extract('style-loader','css-loader') },
+            { test: /\.less$/, loader: ExtractTextPlugin.extract("style-loader","css-loader!less-loader") },
             { test: /\.js[x]?$/, include: path.resolve(__dirname, 'app'), exclude: /node_modules/, loader: 'babel-loader' },
-            { test: /\.(png|jpg)$/, loader: 'url?limit=8192' },
-            { test: /\.(woff|woff2|eot|ttf|svg)(\?.*$|$)/, loader: 'url' }
+            { test: /\.(png|jpg|jpeg|gif)$/, loader: 'file-loader?name=/img/[name].[ext]' },
+            { test: /\.(woff|woff2|eot|ttf|svg)(\?.*$|$)/, loader: 'url-loader' }
         ]
     },
     resolve: {

@@ -9,7 +9,8 @@ module.exports = {
         part: path.resolve(__dirname, 'app/src/js/part.js')        
     },
     output: {
-        path: './app/dist',
+        path: './app/dist/',
+        publicPath:'../',
         filename: 'js/[name].min.js'
     },
     module: {
@@ -17,8 +18,8 @@ module.exports = {
             { test: /\.css$/, loader: ExtractTextPlugin.extract('style-loader', 'css-loader') },
             { test: /\.less$/, loader: ExtractTextPlugin.extract("style-loader", "css-loader!less-loader") },
             { test: /\.js[x]?$/, include: path.resolve(__dirname, 'app'), exclude: /node_modules/, loader: 'babel-loader' },
-            { test: /\.(png|jpg)$/, loader: 'url?limit=8192' },
-            { test: /\.(woff|woff2|eot|ttf|svg)(\?.*$|$)/, loader: 'url' }
+            { test: /\.(png|jpg|jpeg|gif)$/, loader: 'file-loader?name=img/[name].[ext]' },
+            { test: /\.(woff|woff2|eot|ttf|svg)(\?.*$|$)/, loader: 'url-loader' }
         ]
     },
     resolve: {

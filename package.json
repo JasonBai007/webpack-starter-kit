@@ -1,35 +1,37 @@
 {
-    "name": "webpack-starter-kit",
-    "version": "1.0.0",
-    "description": "",
-    "main": "index.js",
-    "scripts": {
-        "start": "webpack-dev-server --progress --hot --colors",
-        "build": "webpack  --progress --colors --config webpack.production.config.js"
-    },
-    "author": "baiyanyun",
-    "license": "MIT",
-    "dependencies": {
-        "bootstrap": "",
-        "font-awesome": "",
-        "jquery": "",
-        "whatwg-fetch": ""
-    },
-    "devDependencies": {
-        "babel-core": "",
-        "babel-loader": "",
-        "babel-preset-es2015": "",
-        "babel-preset-react": "",
-        "babel-preset-stage-0": "",
-        "css-loader": "",
-        "extract-text-webpack-plugin": "",
-        "file-loader": "",
-        "less": "",
-        "less-loader": "",
-        "open-browser-webpack-plugin": "",
-        "style-loader": "",
-        "url-loader": "",
-        "webpack": "",
-        "webpack-dev-server": ""
-    }
+  "name": "webpack-starter-kit",
+  "version": "2.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --progress --hot --colors",
+    "build": "webpack  --progress --colors --config webpack.production.config.js"
+  },
+  "author": "baiyanyun",
+  "license": "MIT",
+  "dependencies": {
+    "antd": "^2.0.0",
+    "font-awesome": "^4.6.3",
+    "jquery": "^3.1.1",
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2",
+    "whatwg-fetch": "^1.0.0"
+  },
+  "devDependencies": {
+    "babel-core": "",
+    "babel-loader": "",
+    "babel-preset-es2015": "",
+    "babel-preset-react": "",
+    "babel-preset-stage-0": "",
+    "css-loader": "",
+    "extract-text-webpack-plugin": "",
+    "file-loader": "",
+    "less": "",
+    "less-loader": "",
+    "open-browser-webpack-plugin": "",
+    "style-loader": "",
+    "url-loader": "",
+    "webpack": "",
+    "webpack-dev-server": ""
+  }
 }

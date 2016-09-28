@@ -19,3 +19,6 @@
 ### Version
 1. Node : 4.5.0
 2. Npm  : 3.10.8
+
+### Screencapture
+![screen](https://github.com/jasonBai007/webpack-starter-kit/raw/master/screencapture.png)

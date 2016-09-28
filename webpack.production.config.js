@@ -9,7 +9,7 @@ module.exports = {
     },
     output: {
         path: './app/dist/',
-        publicPath:'../',
+        publicPath:'dist/',  //居然影响了html中的图片路径
         filename: 'js/[name].buddle.js'
     },
     module: {

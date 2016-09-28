@@ -5,13 +5,12 @@ var uglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
 
 module.exports = {
     entry: {
-        index: path.resolve(__dirname, 'app/src/js/index.js'),
-        part: path.resolve(__dirname, 'app/src/js/part.js')        
+        index: path.resolve(__dirname, 'app/index.jsx')
     },
     output: {
         path: './app/dist/',
         publicPath:'../',
-        filename: 'js/[name].min.js'
+        filename: 'js/[name].buddle.js'
     },
     module: {
         loaders: [
@@ -26,8 +25,8 @@ module.exports = {
         extensions: ['', '.js', '.jsx'],
     },
     plugins: [
-        new webpack.optimize.CommonsChunkPlugin('js/common.min.js'),
-        new ExtractTextPlugin("css/[name].min.css"),
+        new webpack.optimize.CommonsChunkPlugin('js/common.buddle.js'),
+        new ExtractTextPlugin("css/[name].buddle.css"),
         new webpack.ProvidePlugin({
             $: "jquery",
             jQuery: "jquery",

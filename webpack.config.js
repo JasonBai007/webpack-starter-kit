@@ -13,13 +13,12 @@ module.exports = {
         contentBase: './app'
     },
     entry: {
-        index: path.resolve(__dirname, 'app/src/js/index.js'),
-        part: path.resolve(__dirname, 'app/src/js/part.js')        
+        index: path.resolve(__dirname, 'app/index.jsx')
     },
     output: {
         path: 'dist',  //在内存中生成文件的路径
         publicPath: 'http://localhost:8080/dist',  //内部图片路径
-        filename: 'js/[name].min.js'
+        filename: 'js/[name].buddle.js'
     },
     module: {
         loaders: [
@@ -34,8 +33,8 @@ module.exports = {
         extensions: ['', '.js', '.jsx'],
     },
     plugins: [
-        new CommonsChunkPlugin('js/common.min.js'),
-        new ExtractTextPlugin("css/[name].min.css"),
+        new CommonsChunkPlugin('js/common.buddle.js'),
+        new ExtractTextPlugin("css/[name].buddle.css"),
         new webpack.ProvidePlugin({
             $: "jquery",
             jQuery: "jquery",

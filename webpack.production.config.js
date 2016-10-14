@@ -1,11 +1,11 @@
 var webpack = require('webpack');
 var path = require('path');
 var ExtractTextPlugin = require('extract-text-webpack-plugin'); //抽取CSS文件插件
-var uglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
 
 module.exports = {
     entry: {
-        index: path.resolve(__dirname, 'app/index.jsx')
+        index: path.resolve(__dirname, 'app/index.jsx'),
+        vendors:['react','react-dom']  //第三方库和框架
     },
     output: {
         path: './app/dist/',
@@ -15,9 +15,9 @@ module.exports = {
     module: {
         loaders: [
             { test: /\.css$/, loader: ExtractTextPlugin.extract('style-loader', 'css-loader') },
-            { test: /\.less$/, loader: ExtractTextPlugin.extract("style-loader", "css-loader!less-loader") },
-            { test: /\.js[x]?$/, include: path.resolve(__dirname, 'app'), exclude: /node_modules/, loader: 'babel-loader' },
-            { test: /\.(png|jpg|jpeg|gif)$/, loader: 'file-loader?name=img/[name].[ext]' },
+            { test: /\.less$/, loader: ExtractTextPlugin.extract("css-loader!less-loader") },
+            { test: /\.js[x]?$/, exclude: /node_modules/, loader: 'babel-loader' },
+            { test: /\.(png|jpg|jpeg|gif)$/, loader: 'url-loader?limit=1024&name=img/[name].[ext]' },
             { test: /\.(woff|woff2|eot|ttf|svg)(\?.*$|$)/, loader: 'url-loader' }
         ]
     },
@@ -25,14 +25,10 @@ module.exports = {
         extensions: ['', '.js', '.jsx'],
     },
     plugins: [
-        new webpack.optimize.CommonsChunkPlugin('js/common.buddle.js'),
+        new webpack.optimize.CommonsChunkPlugin('vendors','js/vendors.js'),
         new ExtractTextPlugin("css/[name].buddle.css"),
-        new webpack.ProvidePlugin({
-            $: "jquery",
-            jQuery: "jquery",
-            "window.jQuery": "jquery"
-        }),
-        new uglifyJsPlugin({
+        new webpack.ProvidePlugin({ $: "jquery" }),
+        new webpack.optimize.UglifyJsPlugin({
             compress: {
                 warnings: false
             }

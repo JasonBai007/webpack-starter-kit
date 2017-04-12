@@ -11,7 +11,7 @@
 
 ### Usage
 > 1、安装依赖：$ npm install  
-> 2、启动应用：$ npm start  
+> 2、启动应用：$ npm run dev  
 > 3、静态编译：$ npm run build  
 
 ### Articals
@@ -27,6 +27,8 @@ Which version of the package is installed?
 If there is no package.json file in the local directory, the latest version of the package is installed.
 
 If there is package.json file, the latest version satisfying the semver rule declared in package.json for that package (if there is any) is installed.【注意到这条了吗？这里是一个坑，意味着有些时候，版本号写死可能更靠谱】
+
+Webpack已升级到2.x版本
 
 ### Screencapture
 ![screen](https://github.com/jasonBai007/webpack-starter-kit/raw/master/screencapture.png)
